@@ -3,29 +3,13 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Flutter Version') {
-            steps {
-                bat 'flutter --version'
-            }
-        }
-
+        
         stage('Get Dependencies') {
             steps {
                 bat 'flutter pub get'
             }
         }
 
-        stage('Analyze') {
-            steps {
-                bat 'flutter analyze'
-            }
-        }
 
         stage('Test') {
             steps {
@@ -33,9 +17,9 @@ pipeline {
             }
         }
 
-        stage('Build APK') {
+        stage('Build') {
             steps {
-                bat 'flutter build apk --release'
+                bat 'flutter build web'
             }
         }
     }
